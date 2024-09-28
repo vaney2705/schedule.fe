@@ -1,3 +1,11 @@
+export const colors = [
+    {key: "white", label: "Белый"},
+    {key: "blue", label: "Синий"},
+    {key: "green", label: "Зелёный"},
+    {key: "red", label: "Красный"},
+    {key: "orange", label: "Оранжевый"},
+]
+
 export const timeTypes = [
     {key: "45", label: "Академические (45 минут)"},
     {key: "60", label: "Астрономические (60 минут)"},
@@ -17,7 +25,7 @@ export const teachers = [
 ];
 
 
-export const auditorium = [
+export const auditoriums = [
     {key: "aud-101", label: "Аудитория 101"},
     {key: "aud-102", label: "Аудитория 102"},
     {key: "aud-103", label: "Аудитория 103"},
