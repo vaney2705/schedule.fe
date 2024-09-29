@@ -41,33 +41,30 @@ export default function SchedulerModal({isOpen, onOpenChange, onPress}) {
     setWeekDays(arr)
   }
   function computeHourEnd(startTime, timeTypeVal, brkVal, hoursOnDayVal  ) {
-    console.log(startTime, Number(timeTypeVal), brkVal, hoursOnDayVal);
-    let duration = (Number(timeTypeVal) + brkVal + (hoursOnDayVal * 60)) * 60
-    console.log("Duration", duration, duration/60/60);
+    let duration = (brkVal + (hoursOnDayVal * Number(timeTypeVal))) * 60
     let res = startTime.add({seconds: duration})
-    console.log("Res", res)
     setTimeEnd(res)
   }
   function handelTimeType(event) {
-    computeHourEnd(timeStart, event.target.value, breaking.values().next().value === 'break' ? 30 : 0, hoursOnDay - 1)
+    computeHourEnd(timeStart, event.target.value, breaking.values().next().value === 'break' ? 30 : 0, hoursOnDay)
   }
   function handelBreaking(event) {
     let duration = event.target.value === 'break' ? 30 : 0
-    computeHourEnd(timeStart, timeType.values().next().value, duration, hoursOnDay - 1)
+    computeHourEnd(timeStart, timeType.values().next().value, duration, hoursOnDay)
   }
   function handelHoursOnDay(val) {
     setHoursOnDay(val)
     computeHourEnd(timeStart,
                     timeType.values().next().value,
               breaking.values().next().value === 'break' ? 30 : 0,
-        val - 1)
+        val)
   }
   function handelTimeStart(e) {
     setTimeStart(e)
     computeHourEnd(e,
         timeType.values().next().value,
         breaking.values().next().value === 'break' ? 30 : 0,
-        hoursOnDay - 1)
+        hoursOnDay)
   }
 
   function saveSchedule() {
